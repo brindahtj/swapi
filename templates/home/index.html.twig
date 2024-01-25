@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}Accueil
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% for film in films %}
+				<div class="col ">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<h5 class="card-title">{{film.title}}</h5>
+							<h6 class="card-subtitle mb-2 text-body-secondary">Number:
+								{{film.episode_id}}</h6>
+							<p class="card-text">Description:
+								{{film.opening_crawl|slice(100)}}</p>
+							<p class="card-text">Director:
+								{{film.director}}</p>
+							<p class="card-text">
+								Producers:
+								{{film.producer}}</p>
+							<p class="card-text text-body-secondary">{{film.release_date}}</p>
+
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

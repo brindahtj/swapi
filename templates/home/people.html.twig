@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}People
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des personnages</h1>
+	<div class="container">
+		<div class="row">
+			{% for person in people %}
+				{% set id = person.homeworld|replace({'https://swapi.dev/api/planets':'', '/':''}) %}
+				<div class="col ">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<h5 class="card-title">{{person.name}}</h5>
+							<p>{{id}}</p>
+							<h6 class="card-text mb-2 text-body-secondary">Gender:
+								{{person.gender}}</h6>
+							<p class="card-text ">Height:
+								{{person.height}}</p>
+							<p class="card-text">Weight:
+								{{person.mass}}</p>
+							<p class="card-text">Hair color:
+								{{person.hair_color}}</p>
+							<p class="card-text">
+								Skin :
+								{{person.skin_color}}</p>
+							<p class="card-text text-body-secondary">{{person.homeworld}}</p>
+							<a class="btn btn-primary" href="{{path('app_planet', {'id': id})}}">
+								Planete d'origine</a>
+
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</p>
+	</div>
+</div>{% endblock %}
